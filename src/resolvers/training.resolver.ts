@@ -12,7 +12,7 @@ export class TrainingResolver {
     return Training.findOne({ where: { id } });
   }
 
-  @Mutation(() => Training)
+  @Mutation(() => Training) 
   async createTraining(@Arg("data") data: CreateTrainingInput): Promise<Training> {
     const training = Training.create(data);
     await training.save();

@@ -5,7 +5,7 @@ import { User } from "./User";
 @Entity()
 @ObjectType()
 export class Training extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn() 
   id: number;
 
   @Column()

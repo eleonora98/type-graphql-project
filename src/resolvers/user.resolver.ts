@@ -4,7 +4,7 @@ import { User } from "../entity/User";
 import { CreateUserInput, BaseUserInput, UserLoginArgs } from "../input_types/user.input";
 
 @Resolver()
-export class UserResolver {
+export class UserResolver { 
 
   @Query(() => User)
   getUser(@Arg("id") id: number) {

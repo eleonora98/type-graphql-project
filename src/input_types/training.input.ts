@@ -2,7 +2,7 @@ import { InputType, Field, ArgsType } from "type-graphql"
 
 @InputType()
 export class BaseTrainingInput {
-    @Field()
+    @Field() 
     name: string
 
     @Field()

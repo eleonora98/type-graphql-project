@@ -5,7 +5,7 @@ export class BaseUserInput {
     @Field()
     email: string
     @Field()
-    password: string
+    password: string 
 }
 
 @InputType()
