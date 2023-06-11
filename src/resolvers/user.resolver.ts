@@ -1,5 +1,5 @@
 import { Resolver, Query, Arg, Args, Authorized, Ctx, Mutation } from "type-graphql";
-import { DeleteResult } from "typeorm";
+import { DeleteResult, InsertResult } from "typeorm";
 import { User } from "../entity/User";
 import { CreateUserInput, BaseUserInput, UserLoginArgs } from "../input_types/user.input";
 
@@ -11,10 +11,9 @@ export class UserResolver {
     return User.findOne({ where: { id } });
   }
 
-  @Mutation(() => new User)
-  async createUser(@Arg("data") data: CreateUserInput): Promise<User> {
-    const user = User.create(data);
-    await user.save();
+  @Mutation(() => User)
+  async createUser(@Arg("data") data: CreateUserInput): Promise<InsertResult> {
+    const user = User.insert(data)
     return user;
   }
 
