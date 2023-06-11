@@ -12,7 +12,7 @@ export class BaseTrainingInput {
     duration: string
 
     @Field()
-    userId: string
+    userId: number
 }
 
 @InputType()

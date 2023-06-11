@@ -6,28 +6,28 @@ import { BaseTrainingInput, CreateTrainingInput } from "../input_types/training.
 import { CreateUserInput, BaseUserInput } from "../input_types/user.input";
 
 @Resolver()
-class TrainingResolver {
-  @Query(() => User)
-  book(@Arg("id") id: string) {
-    return User.findOne({ where: { id } });
+export class TrainingResolver {
+  @Query(() => Training)
+  getTraining(@Arg("id") id: number) {
+    return Training.findOne({ where: { id } });
   }
 
   @Mutation(() => Training)
-  async createTraining(@Arg("user") data: CreateTrainingInput) {
+  async createTraining(@Arg("data") data: CreateTrainingInput): Promise<Training> {
     const training = Training.create(data);
     await training.save();
     return training;
   }
 
   @Mutation(() => Training)
-  async deleteTraining(@Arg('_id') _id: string):Promise<DeleteResult> {
+  async deleteTraining(@Arg('_id') _id: number):Promise<DeleteResult> {
     return Training.delete(_id)
   }
   @Mutation(() => Training)
-  async updateUser(@Arg('_id') id: string,
-                   @Arg('user') data: BaseTrainingInput):Promise<Training> {
+  async updateTraining(@Arg('_id') id: number,
+                   @Arg('data') data: BaseTrainingInput):Promise<Training> {
     const training = await Training.findOne({ where: { id } });
-    if (!training) throw new Error("Book not found!");
+    if (!training) throw new Error("Training not found!");
     Object.assign(training, data);
     await training.save();
     return training;

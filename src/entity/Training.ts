@@ -6,7 +6,7 @@ import { User } from "./User";
 @ObjectType()
 export class Training extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column()
   @Field(() => String)
